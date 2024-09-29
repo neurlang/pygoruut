@@ -1,6 +1,6 @@
 import unittest
 import time
-from pygoruut.pygoruut import Pygoruut
+from pygoruut import Pygoruut
 
 class TestPygoruutSanity(unittest.TestCase):
     def setUp(self):

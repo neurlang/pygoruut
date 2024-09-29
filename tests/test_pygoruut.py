@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from pygoruut.pygoruut import Pygoruut, PhonemeResponse, Word
+from pygoruut import Pygoruut, PhonemeResponse, Word
 
 
 class TestPygoruut(unittest.TestCase):
