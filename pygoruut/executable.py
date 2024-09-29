@@ -3,8 +3,8 @@ import stat
 import hashlib
 import requests
 from dataclasses import dataclass
-from goplatform import Architecture, OS, Platform
-from releases import releases
+from pygoruut.goplatform import Architecture, OS, Platform
+from pygoruut.releases import releases
 from typing import List
 
 @dataclass
