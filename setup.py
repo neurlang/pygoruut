@@ -8,7 +8,7 @@ setup(
         "requests",
     ],
     author="Neurlang Project",
-    author_email="your.email@example.com",
+    author_email="77860779+neurlang@users.noreply.github.com",
     description="A Python wrapper for the goruut phonemization tool",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

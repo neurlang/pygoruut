@@ -4,8 +4,8 @@ from pygoruut import Pygoruut, PhonemeResponse, Word
 
 
 class TestPygoruut(unittest.TestCase):
-    @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('pygoruut.pygoruut.Config')  # Patch Config class
+    @patch('pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
+    @patch('pygoruut.Config')  # Patch Config class
     @patch('subprocess.Popen')  # Patch subprocess.Popen
     def test_init(self, mock_popen, mock_config, mock_executable):
         # Mock MyPlatformExecutable's get method
@@ -25,8 +25,8 @@ class TestPygoruut(unittest.TestCase):
         # Check if 'Serving...' was found
         mock_process.stderr.readline.assert_called()
 
-    @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('pygoruut.pygoruut.Config')  # Patch Config class
+    @patch('pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
+    @patch('pygoruut.Config')  # Patch Config class
     @patch('subprocess.Popen')  # Patch subprocess.Popen
     def test_del(self, mock_popen, mock_config, mock_executable):
         # Mock MyPlatformExecutable's get method

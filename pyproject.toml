@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pygoruut"
+version = "0.0.1"
+description = "A Python wrapper for the goruut phonemization tool"
+readme = "README.md"
+authors = [{ name = "Neurlang Project", email = "77860779+neurlang@users.noreply.github.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["goruut", "phonemization", "tts"]
+dependencies = [
+    "requests",
+]
+requires-python = ">=3.6"
+
+[project.urls]
+Homepage = "https://github.com/neurlang/pygoruut"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+pythonpath = [
+  "."
+]
+

@@ -4,8 +4,8 @@ import time
 import requests
 from dataclasses import dataclass
 from typing import List
-from .executable import MyPlatformExecutable
-from .config import Config
+from executable import MyPlatformExecutable
+from config import Config
 import tempfile
 
 @dataclass
