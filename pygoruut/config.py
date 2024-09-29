@@ -20,5 +20,5 @@ class Config:
 
     def url(self, subpath):
         path = "http://127.0.0.1:" + str(self.port) + "/" + subpath
-        print(path)
+        #print(path)
         return path

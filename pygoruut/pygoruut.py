@@ -41,10 +41,10 @@ class Pygoruut:
                 if output == '' and self.process.poll() is not None:
                     break  # If process has ended and no output is left, stop
                 if 'Serving...' in output:
-                    print("Process running")
+                    #print("Process running")
                     break  # Stop when the substring is found
-                if output:
-                    print(output.strip())  # Print subprocess output for tracking purposes
+                #if output:
+                #    #print(output.strip())  # Print subprocess output for tracking purposes
                     
 
     def __del__(self):
