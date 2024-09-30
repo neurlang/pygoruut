@@ -52,7 +52,7 @@ class Pygoruut:
     def exact_version(self) -> str:
         return self.version
 
-    def compatible_version(s: str) -> str:
+    def compatible_version(self) -> str:
         return self.version.rstrip('0123456789')
     
     def __del__(self):
