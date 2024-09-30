@@ -28,7 +28,7 @@ class Pygoruut:
                 raise ValueError(f"Unsupported goruut architecture or version: {version}")
         with tempfile.TemporaryDirectory() as temp_dir:
             try:
-                self.executable_path = self.executable.exists(tmp_dir)
+                self.executable_path = self.executable.exists(temp_dir)
             except Exception as e:
                 self.executable_path = self.executable.download(temp_dir)
             self.config = Config()
