@@ -6,12 +6,15 @@ class Architecture(enum.Enum):
     AMD64 = "amd64"
     ARM = "arm"
     ARM64 = "arm64"
+    I386 = "386"
+    RISCV64 = "riscv64"
 
 class OS(enum.Enum):
     ANDROID = "android"
     DARWIN = "darwin"
     LINUX = "linux"
     WINDOWS = "windows"
+    FREEBSD = "freebsd"
 
 class Platform:
     def __init__(self, arch=None, os=None):
@@ -22,11 +25,15 @@ class Platform:
         machine = platform.machine().lower()
         if machine in ('x86_64', 'amd64'):
             return Architecture.AMD64
+        elif machine == 'i386' or machine == 'i686':
+            return Architecture.I386
         elif machine.startswith('arm'):
             if '64' in machine:
                 return Architecture.ARM64
             else:
                 return Architecture.ARM
+        elif machine == 'riscv64':
+            return Architecture.RISCV64
         else:
             raise ValueError(f"Unsupported architecture: {machine}")
 
@@ -41,6 +48,8 @@ class Platform:
             return OS.DARWIN
         elif system == 'windows':
             return OS.WINDOWS
+        elif system == 'freebsd':
+            return OS.FREEBSD
         else:
             raise ValueError(f"Unsupported OS: {system}")
 
