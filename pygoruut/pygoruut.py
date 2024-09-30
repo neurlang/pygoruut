@@ -27,7 +27,10 @@ class Pygoruut:
             else:
                 raise ValueError(f"Unsupported goruut architecture or version: {version}")
         with tempfile.TemporaryDirectory() as temp_dir:
-            self.executable_path = self.executable.download(temp_dir)
+            try:
+                self.executable_path = self.executable.exists(tmp_dir)
+            except Exception as e:
+                self.executable_path = self.executable.download(temp_dir)
             self.config = Config()
             self.config.serialize(os.path.join(temp_dir, "goruut_config.json"))
             self.process = subprocess.Popen([self.executable_path, "--configfile", os.path.join(temp_dir, "goruut_config.json")],
