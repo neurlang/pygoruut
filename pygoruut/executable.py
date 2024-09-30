@@ -66,7 +66,7 @@ class Executable:
         try:
             # Verify file size
             if os.path.getsize(temp_file_path) != self.size:
-                raise ValueError(f"Downloaded file size does not match expected size")
+                raise ValueError(f"Preexisting file size does not match expected size")
             
             # Verify SHA256
             sha256_hash = hashlib.sha256()
@@ -74,7 +74,7 @@ class Executable:
                 for byte_block in iter(lambda: f.read(4096), b""):
                     sha256_hash.update(byte_block)
             if sha256_hash.hexdigest() != self.sha256:
-                raise ValueError("SHA256 hash of downloaded file does not match expected hash")
+                raise ValueError("SHA256 hash of preexisting file does not match expected hash")
             # If we've made it here, all checks have passed
             return temp_file_path
         
@@ -82,13 +82,13 @@ class Executable:
             # If anything goes wrong, delete the temp file if it exists
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
-            raise RuntimeError(f"Failed to download and verify executable: {str(e)}")
+            raise RuntimeError(f"Failed to verify preexisting executable: {str(e)}")
             
     def download(self, temp_dir: str) -> str:
         temp_file_path = os.path.join(temp_dir, self.file_name)
         
         try:
-          exception = ValueError(f"Downloaded file doesn't have any server")
+          exception = ValueError(f"Downloaded file doesn't have any server to load from")
           
           for url_prefix in self.servers:
             url = f"{url_prefix}{self.file_name_public}"
