@@ -46,7 +46,12 @@ class Pygoruut:
                 #if output:
                 #    #print(output.strip())  # Print subprocess output for tracking purposes
                     
+    def exact_version(self) -> str:
+        return self.version
 
+    def compatible_version(s: str) -> str:
+        return self.version.rstrip('0123456789')
+    
     def __del__(self):
         if hasattr(self, 'process'):
             self.process.terminate()
