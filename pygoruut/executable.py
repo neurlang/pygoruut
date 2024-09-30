@@ -148,7 +148,7 @@ class MyPlatformExecutable:
       self.exe = None
 
       for release in releases:
-        if self.version is not None and release[1] != self.version:
+        if self.version is not None and not release[1].startswith(self.version):
           continue
         
         platf = Platform(release[4], release[5])
