@@ -36,7 +36,7 @@ class Executable:
         base_name = "goruut"
         arch = self._transform_arch()
         os_ext = self._transform_os_ext()
-        return f"{base_name}.{arch}.{self.os.value}{os_ext}"
+        return f"{base_name}.{self.sha256}.{arch}.{self.os.value}{os_ext}"
 
     @property
     def file_name_public(self) -> str:
