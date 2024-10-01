@@ -5,6 +5,7 @@ import requests
 from dataclasses import dataclass
 from typing import List
 from pygoruut.executable import MyPlatformExecutable
+from pygoruut.pygoruut_languages import PygoruutLanguages
 from pygoruut.config import Config
 import tempfile
 
@@ -61,6 +62,8 @@ class Pygoruut:
             self.process.wait()
 
     def phonemize(self, language="Greek", sentence="Σήμερα...") -> PhonemeResponse:
+        # handle ISO here
+        language = PygoruutLanguages()[language]
         url = self.config.url("tts/phonemize/sentence")
         payload = {"Language": language, "Sentence": sentence}
         
