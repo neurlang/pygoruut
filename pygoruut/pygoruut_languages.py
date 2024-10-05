@@ -18,6 +18,7 @@ class PygoruutLanguages:
 		"hi": "Hindi",
 		"hu": "Hungarian",
 		"is": "Icelandic",
+		"tts": "Isan",
 		"it": "Italian",
 		"jam": "Jamaican",
 		"ja": "Japanese",
@@ -46,7 +47,6 @@ class PygoruutLanguages:
         self.languagesNonISO639 = [
 		"BengaliDhaka",
 		"BengaliRahr",
-		"Isan",
 		"MalayArab",
 		"VietnameseCentral",
 		"VietnameseSouthern"
