@@ -27,7 +27,7 @@ class Platform:
             return Architecture.AMD64
         elif machine == 'i386' or machine == 'i686':
             return Architecture.I386
-        elif machine.startswith('arm'):
+        elif machine.startswith('arm') or machine.startswith('aarch'):
             if '64' in machine:
                 return Architecture.ARM64
             else:
