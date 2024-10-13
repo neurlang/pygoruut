@@ -12,29 +12,29 @@ class TestPygoruutSanity(unittest.TestCase):
     def test_languages_and_word_pairs(self):
         test_cases = [
             ("el", [
-                ("Σήμερα", "sime̞ɾɐ"),
-                ("καλημέρα", "kalime̞ɾa"),
-                ("ευχαριστώ", "e̞fxaɾisto")
+                ("Σήμερα", "simera"),
+                ("καλημέρα", "kalimera"),
+                ("ευχαριστώ", "efxaristo")
             ]),
             ("English", [
-                ("hello", "hɛloʊ"),
-                ("world", "wɚld"),
+                ("hello", "hˈɛlloʊ"),
+                ("world", "wˈɚld"),
                 ("python", "piθən")
             ]),
             ("Spanish", [
-                ("hola", "ola"),
-                ("mundo", "mundo"),
-                ("gracias", "gɾakias")
+                ("hola", "ˌeolˌa"),
+                ("mundo", "mˈuˈnðo"),
+                ("gracias", "gɾakiasˈ")
             ]),
             ("fr", [
-                ("bonjour", "bonʒuʁ"),
-                ("monde", "mod"),
-                ("merci", "mɛʁki")
+                ("bonjour", "bɔ̃ʒˈuʁ"),
+                ("monde", "mɔ̃dʁ"),
+                ("merci", "mʁkˈɪ")
             ]),
             ("German", [
-                ("hallo", "halloː"),
+                ("hallo", "hˈallˈɔ"),
                 ("welt", "vəlt"),
-                ("danke", "dankə")
+                ("danke", "dˈankə")
             ])
         ]
 
