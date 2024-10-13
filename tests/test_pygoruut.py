@@ -54,7 +54,6 @@ class TestPygoruut(unittest.TestCase):
             "Words": [
                 {
                     "CleanWord": "σήμερα",
-                    "Linguistic": "σήμερα",
                     "Phonetic": "sime̞ɾɐ"
                 }
             ]
@@ -67,7 +66,6 @@ class TestPygoruut(unittest.TestCase):
         self.assertIsInstance(result, PhonemeResponse)
         self.assertEqual(len(result.Words), 1)
         self.assertEqual(result.Words[0].CleanWord, "σήμερα")
-        self.assertEqual(result.Words[0].Linguistic, "σήμερα")
         self.assertEqual(result.Words[0].Phonetic, "sime̞ɾɐ")
 
         mock_post.assert_called_once_with(
