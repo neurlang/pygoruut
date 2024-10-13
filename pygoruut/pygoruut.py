@@ -14,6 +14,11 @@ class Word:
     CleanWord: str
     _Linguistic: str = field(repr=False)  # Hide it, no longer part of the api
     Phonetic: str
+    def __post_init__(self):
+        # Make `_Linguistic` accessible via 'Linguistic' in the constructor
+        if hasattr(self, 'Linguistic'):
+            self._Linguistic = self.Linguistic
+            del self.Linguistic  # Remove to avoid conflicting attribute
 
 @dataclass
 class PhonemeResponse:
