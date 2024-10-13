@@ -12,7 +12,7 @@ import tempfile
 @dataclass
 class Word:
     CleanWord: str
-    #Linguistic: str
+    _Linguistic: str = field(repr=False)  # Hide it, no longer part of the api
     Phonetic: str
 
 @dataclass
