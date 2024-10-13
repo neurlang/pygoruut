@@ -12,7 +12,7 @@ import tempfile
 @dataclass
 class Word:
     CleanWord: str
-    Linguistic: str
+    #Linguistic: str
     Phonetic: str
 
 @dataclass
