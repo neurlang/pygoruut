@@ -2,7 +2,7 @@ import subprocess
 import os
 import time
 import requests
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 from pygoruut.executable import MyPlatformExecutable
 from pygoruut.pygoruut_languages import PygoruutLanguages
