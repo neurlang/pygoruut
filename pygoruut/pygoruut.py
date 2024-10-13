@@ -13,7 +13,7 @@ import tempfile
 class Word:
     CleanWord: str
     Phonetic: str
-    def __init__(self, CleanWord: str, Linguistic: str, Phonetic: str):
+    def __init__(self, CleanWord: str, Phonetic: str, Linguistic: str = None):
         self.CleanWord = CleanWord
         self.Phonetic = Phonetic
 
