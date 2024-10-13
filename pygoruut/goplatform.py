@@ -41,8 +41,8 @@ class Platform:
         system = platform.system().lower()
         if system == 'linux':
             # Check if it's Android
-            #if hasattr(sys, 'getandroidapilevel'):
-            #    return OS.ANDROID
+            if hasattr(sys, 'getandroidapilevel'):
+                return OS.ANDROID
             return OS.LINUX
         elif system == 'darwin':
             return OS.DARWIN
