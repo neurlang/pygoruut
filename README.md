@@ -10,7 +10,8 @@ pygoruut = Pygoruut()
 print(pygoruut.phonemize(language="English", sentence="hello world"))
 
 # Prints:
-# PhonemeResponse(
-#     Words=[Word(CleanWord='hello', Linguistic='hello', Phonetic='hɛloʊ'),
-#            Word(CleanWord='world', Linguistic='world', Phonetic='wɚld')])
+# PhonemeResponse(Words=[
+#  Word(CleanWord='hello', Phonetic='hˈɛlloʊ'),
+#  Word(CleanWord='world', Phonetic='wˈɚld')])
+
 ```
