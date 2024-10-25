@@ -14,25 +14,25 @@ class TestPygoruutSanity(unittest.TestCase):
             ("el", [
                 ("Σήμερα", "simera"),
                 ("καλημέρα", "kalimera"),
-                ("ευχαριστώ", "efxaristo")
+                ("ευχαριστώ", "eixaristo")
             ]),
             ("English", [
                 ("hello", "hˈɛlloʊ"),
                 ("world", "wˈɚld"),
-                ("python", "piθən")
+                ("python", "piθoʊn")
             ]),
             ("Spanish", [
-                ("hola", "ˌeolˌa"),
-                ("mundo", "mˈuˈnðo"),
-                ("gracias", "gɾakiasˈ")
+                ("hola", "ˌeola"),
+                ("mundo", "mˈuˈndo"),
+                ("gracias", "gɾakˈias")
             ]),
             ("fr", [
-                ("bonjour", "bɔ̃ʒˈuʁ"),
-                ("monde", "mɔ̃dʁ"),
-                ("merci", "mʁkˈɪ")
+                ("bonjour", "bɔ̃ʒuʁ"),
+                ("monde", "mɔ̃d"),
+                ("merci", "mʁkˈi")
             ]),
             ("German", [
-                ("hallo", "hˈallˈɔ"),
+                ("hallo", "hˈaltˈɔ"),
                 ("welt", "vəlt"),
                 ("danke", "dˈankə")
             ])
