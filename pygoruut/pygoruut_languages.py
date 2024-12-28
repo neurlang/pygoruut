@@ -65,7 +65,23 @@ class PygoruutLanguages:
 		"ur": "Urdu",
 		"ug": "Uyghur",
 		"vi": "VietnameseNorthern",
-		"zu": "Zulu"
+		"zu": "Zulu",
+		"hy": "Armenian",
+		"eu": "Basque",
+		"bg": "Bulgarian",
+		"ca": "Catalan",
+		"ny": "Chichewa",
+		"hr": "Croatian",
+		"et": "Estonian",
+		"gl": "Galician",
+		"ka": "Georgian",
+		"km": "KhmerCentral",
+		"lo": "Lao",
+		"lv": "Latvian",
+		"lt": "Lithuanian",
+		"sr": "Serbian",
+		"tl": "Tagalog",
+		"yo": "Yoruba"
         }
 
         # Non-ISO 639 language or dialect names
