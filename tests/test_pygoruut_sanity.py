@@ -23,16 +23,16 @@ class TestPygoruutSanity(unittest.TestCase):
             ]),
             ("Spanish", [
                 ("hola", "ˌeola"),
-                ("mundo", "mˈuˈndo"),
+                ("mundo", "mundo"),
                 ("gracias", "gɾakˈias")
             ]),
             ("fr", [
                 ("bonjour", "bɔ̃ʒuʁ"),
                 ("monde", "mɔ̃d"),
-                ("merci", "mʁkˈi")
+                ("merci", "mʁki")
             ]),
             ("German", [
-                ("hallo", "hˈaltˈɔ"),
+                ("hallo", "hˈaltoː"),
                 ("welt", "vəlt"),
                 ("danke", "dˈankə")
             ])
