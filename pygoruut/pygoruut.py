@@ -63,11 +63,11 @@ class Pygoruut:
             self.process.terminate()
             self.process.wait()
 
-    def phonemize(self, language="Greek", sentence="Σήμερα...") -> PhonemeResponse:
+    def phonemize(self, language="Greek", sentence="Σήμερα...", is_reverse=False) -> PhonemeResponse:
         # handle ISO here
         language = PygoruutLanguages()[language]
         url = self.config.url("tts/phonemize/sentence")
-        payload = {"Language": language, "Sentence": sentence}
+        payload = {"Language": language, "Sentence": sentence, "IsReverse": is_reverse}
         
         response = requests.post(url, json=payload)
         response.raise_for_status()
