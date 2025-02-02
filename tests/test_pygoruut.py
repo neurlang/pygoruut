@@ -70,7 +70,7 @@ class TestPygoruut(unittest.TestCase):
 
         mock_post.assert_called_once_with(
             pygoruut.config.url("tts/phonemize/sentence"),
-            json={"Language": "Greek", "Sentence": "Σήμερα..."}
+            json={"Language": "Greek", "Sentence": "Σήμερα...", "IsReverse": False}
         )
 
 if __name__ == '__main__':
