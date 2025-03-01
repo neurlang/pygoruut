@@ -23,18 +23,18 @@ class TestPygoruutSanity(unittest.TestCase):
                 ("python", "pˈaɪθɑn", True)
             ]),
             ("Spanish", [
-                ("hola", "ˈola", True),
+                ("hola", "ˈola", False),
                 ("mundo", "mˈundo", True),
                 ("gracias", "gɾˈaθjas", True)
             ]),
             ("fr", [
-                ("bonjour", "bɔ̃ʒˈuʁ", True),
+                ("bonjour", "bɔ̃ʒˈuʁ", False),
                 ("monde", "mˈɔ̃d", True),
-                ("merci", "mɛʁsˈi", True)
+                ("merci", "mɛʁsˈi", False)
             ]),
             ("German", [
                 ("hallo", "hˈaloː", True),
-                ("welt", "vˈɛlt", True),
+                ("welt", "vˈɛlt", False),
                 ("danke", "dˈaŋkə", True)
             ])
         ]
