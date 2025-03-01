@@ -8,6 +8,26 @@ from pygoruut.executable import MyPlatformExecutable
 from pygoruut.pygoruut_languages import PygoruutLanguages
 from pygoruut.config import Config
 import tempfile
+from pathlib import Path
+
+class PathContext(str):
+    """A string-like path that supports the context manager protocol."""
+    def __init__(self, path):
+        self.path = path
+        self.original_dir = os.getcwd()
+
+    def __enter__(self):
+        # Change directory (or perform other setup)
+        os.chdir(self.path)
+        return self  # Return self to allow using the object directly
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        # Restore original directory (or cleanup)
+        os.chdir(self.original_dir)
+
+    # Optional: Implement __fspath__ for os.PathLike compatibility
+    def __fspath__(self):
+        return str(self.path)
 
 @dataclass
 class Word:
@@ -22,14 +42,14 @@ class PhonemeResponse:
     Words: List[Word]
 
 class Pygoruut:
-    def __init__(self, version=None):
+    def __init__(self, version=None, writeable_bin_dir=None):
         self.executable, self.platform, self.version = MyPlatformExecutable(version).get()
         if self.executable is None: 
             if version is None:
                 raise ValueError(f"Unsupported goruut architecture")
             else:
                 raise ValueError(f"Unsupported goruut architecture or version: {version}")
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with PathContext(writeable_bin_dir) if writeable_bin_dir else tempfile.TemporaryDirectory() as temp_dir:
             try:
                 self.executable_path = self.executable.exists(temp_dir)
             except Exception as e:
