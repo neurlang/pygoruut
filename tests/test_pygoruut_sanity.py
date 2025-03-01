@@ -29,7 +29,7 @@ class TestPygoruutSanity(unittest.TestCase):
             ]),
             ("fr", [
                 ("bonjour", "bɔ̃ʒˈuʁ", False),
-                ("monde", "mˈɔ̃d", True),
+                ("monde", "mˈɔ̃d", False),
                 ("merci", "mɛʁsˈi", False)
             ]),
             ("German", [
