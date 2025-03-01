@@ -11,19 +11,19 @@ print(pygoruut.phonemize(language="English", sentence="fast racing car"))
 
 # Prints:
 # PhonemeResponse(Words=[
-#  Word(CleanWord='fast', Phonetic='fəst'),
-#  Word(CleanWord='racing', Phonetic='ɹəkɪŋ'),
-#  Word(CleanWord='car', Phonetic='kəɹ')])
+#  Word(CleanWord='fast', Phonetic='fˈæst'),
+#  Word(CleanWord='racing', Phonetic='ˈɹeɪsɪŋ'),
+#  Word(CleanWord='car', Phonetic='kɑː')])
 
 # Now, convert it back
 
-print(pygoruut.phonemize(language="English", sentence="fəst ɹəkɪŋ kəɹ", is_reverse=True))
+print(pygoruut.phonemize(language="English", sentence="fˈæst ˈɹeɪsɪŋ kɑː", is_reverse=True))
 
 # Prints:
 # PhonemeResponse(Words=[
-#  Word(CleanWord='fəst', Phonetic='fast'),
-#  Word(CleanWord='ɹəkɪŋ', Phonetic='racing'),
-#  Word(CleanWord='kəɹ', Phonetic='car')])
+#  Word(CleanWord='fˈæst', Phonetic='fast'),
+#  Word(CleanWord='ˈɹeɪsɪŋ', Phonetic='racing'),
+#  Word(CleanWord='kɑː', Phonetic='carr')])
 
 ```
 
@@ -51,3 +51,28 @@ print(pygoruut.phonemize(language="Uyghur", sentence="qizil gyl ʔɑtɑ", is_rev
 ```
 
 The quality of translation varies accros the 85 supported languages.
+
+## Advanced Use
+
+### Force a specific version
+
+A certain version is frozen, it will translate all words in the same way
+
+```
+from pygoruut.pygoruut import Pygoruut
+
+pygoruut = Pygoruut(version='0.4.0')
+
+```
+
+### Configure a model download directory for faster startup
+
+For faster startup, the model can be cached in the user-provided directory
+
+```
+from pygoruut.pygoruut import Pygoruut
+
+pygoruut = Pygoruut(writeable_bin_dir='/home/john/')
+```
+
+
