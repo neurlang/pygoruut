@@ -11,30 +11,31 @@ class TestPygoruutSanity(unittest.TestCase):
 
     def test_languages_and_word_pairs(self):
         test_cases = [
+            # These have to be words which don't have multiple pronounces
             ("el", [
-                ("σιμερα", "simera", True),
-                ("καλιμερα", "kalimera", True),
-                ("ευχαριστώ", "eixaristo", False)
+                ("σιμερα", "zʝiɛra", False),
+                ("καλιμερα", "kɑˈiˈmerɑ", False),
+                ("ευχαριστώ", "efxaˈristɔ", True)
             ]),
             ("English", [
-                ("hello", "hˈɛllˈɑ", False),
-                ("world", "wˈˈɑɹld", False),
-                ("python", "piθˈɑn", False)
+                ("hampered", "hˈæmpɚd", True),
+                ("super", "sˈupɚ", True),
+                ("python", "pˈaɪθɑn", True)
             ]),
             ("Spanish", [
-                ("hola", "ˈola", False),
-                ("mundo", "mundo", True),
-                ("gracias", "gɾaθjˈas", False)
+                ("hola", "ˈola", True),
+                ("mundo", "mˈundo", True),
+                ("gracias", "gɾˈaθjas", True)
             ]),
             ("fr", [
-                ("bonjour", "bɔ̃ʒuʁ", False),
-                ("monde", "mond", False),
-                ("merci", "mʁki", False)
+                ("bonjour", "bɔ̃ʒˈuʁ", True),
+                ("monde", "mˈɔ̃d", True),
+                ("merci", "mɛʁsˈi", True)
             ]),
             ("German", [
-                ("hallo", "hˈalloːz", False),
-                ("welt", "vˈəlt", True),
-                ("danke", "dˈankə", True)
+                ("hallo", "hˈaloː", True),
+                ("welt", "vˈɛlt", True),
+                ("danke", "dˈaŋkə", True)
             ])
         ]
 
