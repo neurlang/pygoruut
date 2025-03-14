@@ -2,51 +2,35 @@
 
 ## Getting started
 
-```
+```python
 from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut()
 
-print(pygoruut.phonemize(language="English", sentence="fast racing car"))
+print(str(pygoruut.phonemize(language="English", sentence="fast racing car")))
 
-# Prints:
-# PhonemeResponse(Words=[
-#  Word(CleanWord='fast', Phonetic='fˈæst'),
-#  Word(CleanWord='racing', Phonetic='ˈɹeɪsɪŋ'),
-#  Word(CleanWord='car', Phonetic='kɑː')])
+# Prints: fˈæst ˈɹeɪsɪŋ kɑː
 
 # Now, convert it back
 
-print(pygoruut.phonemize(language="English", sentence="fˈæst ˈɹeɪsɪŋ kɑː", is_reverse=True))
+print(str(pygoruut.phonemize(language="English", sentence="fˈæst ˈɹeɪsɪŋ kɑː", is_reverse=True)))
 
-# Prints:
-# PhonemeResponse(Words=[
-#  Word(CleanWord='fˈæst', Phonetic='fast'),
-#  Word(CleanWord='ˈɹeɪsɪŋ', Phonetic='racing'),
-#  Word(CleanWord='kɑː', Phonetic='carr')])
+# Prints: fast racing carr
 
 ```
 
 ### Uyghur language, our highest quality language
 
-```
-print(pygoruut.phonemize(language="Uyghur", sentence="قىزىل گۈل ئاتا"))
+```python
+print(str(pygoruut.phonemize(language="Uyghur", sentence="قىزىل گۈل ئاتا")))
 
-# Prints:
-# PhonemeResponse(Words=[
-#  Word(CleanWord='قىزىل', Phonetic='qizil'),
-#  Word(CleanWord='گۈل', Phonetic='gyl'),
-#  Word(CleanWord='ئاتا', Phonetic='ʔɑtɑ')])
+# Prints: qɯzɤl gyl ʔɑtɑ
 
 # Now, convert it back
 
-print(pygoruut.phonemize(language="Uyghur", sentence="qizil gyl ʔɑtɑ", is_reverse=True))
+print(str(pygoruut.phonemize(language="Uyghur", sentence="qizil gyl ʔɑtɑ", is_reverse=True)))
 
-# Prints:
-# PhonemeResponse(Words=[
-#  Word(CleanWord='qizil', Phonetic='قىزىل'),
-#  Word(CleanWord='gyl', Phonetic='گۈل'),
-#  Word(CleanWord='ʔɑtɑ', Phonetic='ئاتا')])
+# Prints: قىزىل گۈل ئاتا
 
 ```
 
@@ -54,14 +38,30 @@ The quality of translation varies accros the 85 supported languages.
 
 ## Advanced Use
 
+### Multi lingual sentences handling
+
+Use comma (,) separated languages in language (the first language is the preferred language):
+
+```python
+print(pygoruut.phonemize(language="English,Slovak", sentence="hello world ahojte not-in-dictionary!!!!"))
+
+# Prints: hɛlˈoʊ wəld aɦɔjcɛ --nˈoʊtˈinnikʃənɑɹɪ!!!!
+```
+
+### No punctuation
+
+```python
+' '.join([w.Phonetic for w in pygoruut.phonemize(language="English", sentence="hello world!!!!").Words])
+```
+
 ### Force a specific version
 
 A certain version is frozen, it will translate all words in the same way
 
-```
+```python
 from pygoruut.pygoruut import Pygoruut
 
-pygoruut = Pygoruut(version='v0.4.0')
+pygoruut = Pygoruut(version='v0.5.0')
 
 ```
 
@@ -69,10 +69,16 @@ pygoruut = Pygoruut(version='v0.4.0')
 
 For faster startup, the model can be cached in the user-provided directory
 
-```
+```python
 from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut(writeable_bin_dir='/home/john/')
 ```
 
+If you want to cache it in user's home subdir .goruut, use:
 
+```python
+from pygoruut.pygoruut import Pygoruut
+
+pygoruut = Pygoruut(writeable_bin_dir='')
+```

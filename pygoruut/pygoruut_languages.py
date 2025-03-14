@@ -90,7 +90,9 @@ class PygoruutLanguages:
 		"BengaliRahr",
 		"MalayArab",
 		"VietnameseCentral",
-		"VietnameseSouthern"
+		"VietnameseSouthern",
+		"EnglishAmerican",
+		"EnglishBritish"
         ]
 
     def get_supported_languages(self):

@@ -17,7 +17,7 @@ class TestPygoruut(unittest.TestCase):
         mock_process.poll.return_value = None
         mock_popen.return_value = mock_process
 
-        pygoruut = Pygoruut()
+        pygoruut = Pygoruut(writeable_bin_dir='')
 
         # Assert Popen was called with expected arguments
         mock_popen.assert_called_once()
@@ -38,7 +38,7 @@ class TestPygoruut(unittest.TestCase):
         mock_process.poll.return_value = None
         mock_popen.return_value = mock_process
 
-        pygoruut = Pygoruut()
+        pygoruut = Pygoruut(writeable_bin_dir='')
 
         # Test the destructor (when the object is deleted)
         del pygoruut
@@ -54,23 +54,23 @@ class TestPygoruut(unittest.TestCase):
             "Words": [
                 {
                     "CleanWord": "σήμερα",
-                    "Phonetic": "sime̞ɾɐ"
+                    "Phonetic": "ˈsimira"
                 }
             ]
         }
         mock_post.return_value = mock_response
 
-        pygoruut = Pygoruut()
+        pygoruut = Pygoruut(writeable_bin_dir='')
         result = pygoruut.phonemize()
 
         self.assertIsInstance(result, PhonemeResponse)
         self.assertEqual(len(result.Words), 1)
         self.assertEqual(result.Words[0].CleanWord, "σήμερα")
-        self.assertEqual(result.Words[0].Phonetic, "sime̞ɾɐ")
+        self.assertEqual(result.Words[0].Phonetic, "ˈsimira")
 
         mock_post.assert_called_once_with(
             pygoruut.config.url("tts/phonemize/sentence"),
-            json={"Language": "Greek", "Sentence": "Σήμερα...", "IsReverse": False}
+            json={"Language": "Greek", "Languages": [], "Sentence": "Σήμερα...", "IsReverse": False}
         )
 
 if __name__ == '__main__':

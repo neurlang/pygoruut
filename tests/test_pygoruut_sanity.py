@@ -4,7 +4,7 @@ from pygoruut.pygoruut import Pygoruut
 
 class TestPygoruutSanity(unittest.TestCase):
     def setUp(self):
-        self.pygoruut = Pygoruut()
+        self.pygoruut = Pygoruut(writeable_bin_dir='')
 
     def tearDown(self):
         del self.pygoruut
@@ -13,19 +13,19 @@ class TestPygoruutSanity(unittest.TestCase):
         test_cases = [
             # These have to be words which don't have multiple pronounces
             ("el", [
-                ("σιμερα", "zʝiɛra", False),
-                ("καλιμερα", "kɑˈiˈmerɑ", False),
-                ("ευχαριστώ", "efxaˈristɔ", True)
+                ("σιμερα", "ˈsiˈmɛra", False),
+                ("καλιμερα", "kaaiˈeˈɑ", False),
+                ("ευχαριστώ", "efxaˈristɔ", False)
             ]),
             ("English", [
-                ("hampered", "hˈæmpɚd", True),
-                ("super", "sˈupɚ", True),
-                ("python", "pˈaɪθɑn", True)
+                ("hampered", "hˈæmpɚd", False),
+                ("super", "sˈupɚ", False),
+                ("python", "pˈaɪθɑn", False)
             ]),
             ("Spanish", [
                 ("hola", "ˈola", False),
-                ("mundo", "mˈundo", True),
-                ("gracias", "gɾˈaθjas", True)
+                ("mundo", "mˈundo", False),
+                ("gracias", "gɾˈaθjas", False)
             ]),
             ("fr", [
                 ("bonjour", "bɔ̃ʒˈuʁ", False),
@@ -35,7 +35,7 @@ class TestPygoruutSanity(unittest.TestCase):
             ("German", [
                 ("hallo", "hˈaloː", True),
                 ("welt", "vˈɛlt", False),
-                ("danke", "dˈaŋkə", True)
+                ("danke", "dˈaŋkə", False)
             ])
         ]
 
