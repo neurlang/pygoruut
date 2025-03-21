@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygoruut"
-version = "0.5.0"
+version = "0.5.1"
 description = "A Python wrapper for the goruut phonemization tool"
 readme = "README.md"
 authors = [{ name = "Neurlang Project", email = "77860779+neurlang@users.noreply.github.com" }]
