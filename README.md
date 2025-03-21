@@ -34,7 +34,7 @@ print(str(pygoruut.phonemize(language="Uyghur", sentence="qizil gyl ʔɑtɑ", is
 
 ```
 
-The quality of translation varies accros the 85 supported languages.
+The quality of translation varies accros the 136 supported languages.
 
 ## Advanced Use
 
@@ -61,7 +61,7 @@ A certain version is frozen, it will translate all words in the same way
 ```python
 from pygoruut.pygoruut import Pygoruut
 
-pygoruut = Pygoruut(version='v0.5.0')
+pygoruut = Pygoruut(version='v0.5.1')
 
 ```
 
