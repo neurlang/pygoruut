@@ -129,7 +129,8 @@ class PygoruutLanguages:
 		"tk": "Turkmen",
 		"uz": "Uzbek",
 		"cyw": "WelshNorth",
-		"cys": "WelshSouth"
+		"cys": "WelshSouth",
+		"yue": "Cantonese"
         }
 
         # Non-ISO 639 language or dialect names
@@ -141,7 +142,10 @@ class PygoruutLanguages:
 		"VietnameseSouthern",
 		"EnglishAmerican",
 		"EnglishBritish",
-		"NahuatlClassical"
+		"NahuatlClassical",
+		"Hebrew2",
+		"MinnanTawianese",
+		"MinnanHokkien"
         ]
 
     def get_supported_languages(self):
