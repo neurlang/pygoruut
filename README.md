@@ -9,13 +9,13 @@ pygoruut = Pygoruut()
 
 print(str(pygoruut.phonemize(language="English", sentence="fast racing car")))
 
-# Prints: fˈæst ˈɹeɪsɪŋ kɑː
+# Prints: fˈæst ɹˈeɪsɪŋ kˈɑɹ
 
 # Now, convert it back
 
-print(str(pygoruut.phonemize(language="English", sentence="fˈæst ˈɹeɪsɪŋ kɑː", is_reverse=True)))
+print(str(pygoruut.phonemize(language="English", sentence="fˈæst ɹˈeɪsɪŋ kˈɑɹ", is_reverse=True)))
 
-# Prints: fast racing carr
+# Prints: fast racing car
 
 ```
 
@@ -24,7 +24,7 @@ print(str(pygoruut.phonemize(language="English", sentence="fˈæst ˈɹeɪsɪŋ 
 ```python
 print(str(pygoruut.phonemize(language="Uyghur", sentence="قىزىل گۈل ئاتا")))
 
-# Prints: qɯzɤl gyl ʔɑtɑ
+# Prints: qizil gyl ʔɑtɑ
 
 # Now, convert it back
 
@@ -43,9 +43,25 @@ The quality of translation varies accros the 136 supported languages.
 Use comma (,) separated languages in language (the first language is the preferred language):
 
 ```python
-print(pygoruut.phonemize(language="English,Slovak", sentence="hello world ahojte not-in-dictionary!!!!"))
+print(pygoruut.phonemize(language="English,Slovak", sentence="hello world ahojte notindictionary!!!!"))
 
-# Prints: hɛlˈoʊ wəld aɦɔjcɛ --nˈoʊtˈinnikʃənɑɹɪ!!!!
+# Prints: həlˈoʊ wəld aɦɔjcɛ nɔtɪndɪktˈɪoʊŋɑɹi!!!!
+```
+
+### Numerics handling (English, Arabic)
+
+```python
+print(str(pygoruut.phonemize(language="English", sentence="100 bottles")))
+
+# Prints: wæn ˈhʌndəd bˈɑtəlz
+```
+
+### Homograph handling (English)
+
+```python
+print(str(pygoruut.phonemize(language="English", sentence="He dove into the pool to join the dove")))
+
+# Prints: hˈi 'doʊv ˈɪntu ðə pˈul tə dʒˈɔɪn ðə 'dʌv
 ```
 
 ### No punctuation
@@ -56,12 +72,12 @@ print(pygoruut.phonemize(language="English,Slovak", sentence="hello world ahojte
 
 ### Force a specific version
 
-A certain version is frozen, it will translate all words in the same way
+A certain version is frozen, it will translate all words in the same way forever
 
 ```python
 from pygoruut.pygoruut import Pygoruut
 
-pygoruut = Pygoruut(version='v0.5.1')
+pygoruut = Pygoruut(version='v0.6.1')
 
 ```
 
