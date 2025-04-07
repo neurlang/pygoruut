@@ -77,7 +77,7 @@ A certain version is frozen, it will translate all words in the same way forever
 ```python
 from pygoruut.pygoruut import Pygoruut
 
-pygoruut = Pygoruut(version='v0.6.1')
+pygoruut = Pygoruut(version='v0.6.2')
 
 ```
 
