@@ -7,13 +7,13 @@ from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut()
 
-print(str(pygoruut.phonemize(language="EnglishBritish", sentence="fast racing car")))
+print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fast racing car")))
 
-# Prints: fˈæst ɹˈeɪsɪŋ kˈɑː
+# Prints: fˈɑːst ɹˈeɪsɪŋ kˈɑː
 
 # Now, convert it back
 
-print(str(pygoruut.phonemize(language="EnglishBritish", sentence="fˈæst ɹˈeɪsɪŋ kˈɑː", is_reverse=True)))
+print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fˈæst ɹˈeɪsɪŋ kˈɑɹ", is_reverse=True)))
 
 # Prints: fast racing car
 ```
