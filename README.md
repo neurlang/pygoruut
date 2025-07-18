@@ -9,7 +9,7 @@ pygoruut = Pygoruut()
 
 print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fast racing car")))
 
-# Prints: fˈɑːst ɹˈeɪsɪŋ kˈɑː
+# Prints: fˈæst ɹˈeɪsɪŋ kˈɑɹ
 
 # Now, convert it back
 
