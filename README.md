@@ -7,17 +7,20 @@ from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut()
 
-print(str(pygoruut.phonemize(language="English", sentence="fast racing car")))
+print(str(pygoruut.phonemize(language="EnglishBritish", sentence="fast racing car")))
 
-# Prints: fˈæst ɹˈeɪsɪŋ kˈɑɹ
+# Prints: fˈæst ɹˈeɪsɪŋ kˈɑː
 
 # Now, convert it back
 
-print(str(pygoruut.phonemize(language="English", sentence="fˈæst ɹˈeɪsɪŋ kˈɑɹ", is_reverse=True)))
+print(str(pygoruut.phonemize(language="EnglishBritish", sentence="fˈæst ɹˈeɪsɪŋ kˈɑː", is_reverse=True)))
 
 # Prints: fast racing car
-
 ```
+
+> ℹ️ For English, we recommend using `EnglishBritish` or `EnglishAmerican` instead of `English`. These dialect-specific models use high-quality Kokoro Misaki dictionaries and produce better results, especially for reversing IPA back to text.
+
+---
 
 ### Uyghur language, our highest quality language
 
@@ -31,59 +34,69 @@ print(str(pygoruut.phonemize(language="Uyghur", sentence="قىزىل گۈل ئا
 print(str(pygoruut.phonemize(language="Uyghur", sentence="qizil gyl ʔɑtɑ", is_reverse=True)))
 
 # Prints: قىزىل گۈل ئاتا
-
 ```
 
-The quality of translation varies accros the 136 supported languages.
+The quality of translation varies across the 136 supported languages.
+
+---
 
 ## Advanced Use
 
-### Multi lingual sentences handling
+### Multi-lingual sentence handling
 
-Use comma (,) separated languages in language (the first language is the preferred language):
+Use comma (`,`) separated languages in `language`. The first language is the preferred language:
 
 ```python
-print(pygoruut.phonemize(language="English,Slovak", sentence="hello world ahojte notindictionary!!!!"))
+print(pygoruut.phonemize(language="EnglishBritish,Slovak", sentence="hello world ahojte notindictionary!!!!"))
 
-# Prints: həlˈoʊ wəld aɦɔjcɛ nɔtɪndɪktˈɪoʊŋɑɹi!!!!
+# Prints: həlˈəʊ wəld aɦɔjcɛ nɔtɪndɪktˈɪoʊŋɑɹi!!!!
 ```
+
+---
 
 ### Numerics handling (English, Arabic)
 
 ```python
-print(str(pygoruut.phonemize(language="English", sentence="100 bottles")))
+print(str(pygoruut.phonemize(language="EnglishBritish", sentence="100 bottles")))
 
-# Prints: wæn ˈhʌndəd bˈɑtəlz
+# Prints: wʌn ˈhʌndrəd bˈɒtlz
 ```
+
+---
 
 ### Homograph handling (English)
 
 ```python
-print(str(pygoruut.phonemize(language="English", sentence="He dove into the pool to join the dove")))
+print(str(pygoruut.phonemize(language="EnglishBritish", sentence="He dove into the pool to join the dove")))
 
-# Prints: hˈi 'doʊv ˈɪntu ðə pˈul tə dʒˈɔɪn ðə 'dʌv
+# Prints: hˈi dˈəʊv ˈɪntu ðə pˈuːl tə dʒˈɔɪn ðə dˈʌv
 ```
+
+---
 
 ### No punctuation
 
 ```python
-' '.join([w.Phonetic for w in pygoruut.phonemize(language="English", sentence="hello world!!!!").Words])
+' '.join([w.Phonetic for w in pygoruut.phonemize(language="EnglishBritish", sentence="hello world!!!!").Words])
 ```
+
+---
 
 ### Force a specific version
 
-A certain version is frozen, it will translate all words in the same way forever
+You can pin a specific version. It will translate all words in the same way forever:
 
 ```python
 from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut(version='v0.6.2')
-
 ```
+
+---
 
 ### Configure a model download directory for faster startup
 
-For faster startup, the model can be cached in the user-provided directory
+To cache models in a user-specified directory:
 
 ```python
 from pygoruut.pygoruut import Pygoruut
@@ -91,10 +104,14 @@ from pygoruut.pygoruut import Pygoruut
 pygoruut = Pygoruut(writeable_bin_dir='/home/john/')
 ```
 
-If you want to cache it in user's home subdir .goruut, use:
+To cache in the user's home subdirectory `.goruut`:
 
 ```python
 from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut(writeable_bin_dir='')
 ```
+
+---
+
+Let me know if you'd like a Markdown file or a diff patch format for updating the original `README.md`.
