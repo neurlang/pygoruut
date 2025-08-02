@@ -22,3 +22,15 @@ class Config:
         path = "http://127.0.0.1:" + str(self.port) + "/" + subpath
         #print(path)
         return path
+
+class ConfigApi:
+    def __init__(self, url):
+        self.url = url
+
+    def serialize(self, filename):
+        return
+
+    def url(self, subpath):
+        path = self.url + "/" + subpath
+        #print(path)
+        return path

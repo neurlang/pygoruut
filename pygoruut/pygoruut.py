@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from typing import List
 from pygoruut.executable import MyPlatformExecutable
 from pygoruut.pygoruut_languages import PygoruutLanguages
-from pygoruut.config import Config
+from pygoruut.config import Config, ConfigApi
 import tempfile
 from pathlib import Path
 
@@ -36,12 +36,16 @@ class Word:
     PosTags: List[str]
     PrePunct: str
     PostPunct: str
-    def __init__(self, CleanWord: str, Phonetic: str, Linguistic: str = None, PostPunct: str = "", PrePunct: str = "", PosTags: List[str] = []):
+    IsFirst: bool
+    IsLast: bool
+    def __init__(self, CleanWord: str, Phonetic: str, Linguistic: str = None, PostPunct: str = "", PrePunct: str = "", PosTags: List[str] = [], IsFirst = None, IsLast = None):
         self.CleanWord = CleanWord
         self.Phonetic = Phonetic
         self.PosTags = PosTags
         self.PrePunct = PrePunct
         self.PostPunct = PostPunct
+        self.IsFirst = IsFirst
+        self.IsLast = IsLast
 
 @dataclass
 class PhonemeResponse:
@@ -50,10 +54,17 @@ class PhonemeResponse:
         return ' '.join([w.PrePunct + w.Phonetic + w.PostPunct for w in self.Words])
 
 class Pygoruut:
-    def __init__(self, version=None, writeable_bin_dir=None):
+    def __init__(self, version=None, writeable_bin_dir=None, api=None):
         self.executable, self.platform, self.version = MyPlatformExecutable(version).get()
-        if self.executable is None: 
-            if version is None:
+        if self.executable is None:
+            if api is not None:
+                self.executable = None
+                self.platform = None
+                self.version = None
+                self.process = None
+                self.config = ConfigApi(api)
+                return
+            elif version is None:
                 raise ValueError(f"Unsupported goruut architecture")
             else:
                 raise ValueError(f"Unsupported goruut architecture or version: {version}")

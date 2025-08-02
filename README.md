@@ -94,6 +94,18 @@ pygoruut = Pygoruut(version='v0.6.2')
 
 ---
 
+### Use an online inference api
+
+You can use an inference api. The model will not be downloaded:
+
+```python
+from pygoruut.pygoruut import Pygoruut
+
+pygoruut = Pygoruut(api='https://hashtron.cloud')
+```
+
+---
+
 ### Configure a model download directory for faster startup
 
 To cache models in a user-specified directory:
