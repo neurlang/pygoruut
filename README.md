@@ -123,7 +123,3 @@ from pygoruut.pygoruut import Pygoruut
 
 pygoruut = Pygoruut(writeable_bin_dir='')
 ```
-
----
-
-Let me know if you'd like a Markdown file or a diff patch format for updating the original `README.md`.
