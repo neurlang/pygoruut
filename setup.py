@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="pygoruut",
-    version="0.6.2",
+    version="0.6.3",
     packages=find_packages(),
     install_requires=[
         "requests",
     ],
     author="Neurlang Project",
     author_email="77860779+neurlang@users.noreply.github.com",
-    description="A Python wrapper for the goruut phonemization tool",
+    description="Text-to-IPA converter and phonetic translator for Python, powered by the Goruut phonemization engine",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/neurlang/pygoruut",
