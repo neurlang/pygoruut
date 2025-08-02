@@ -144,8 +144,11 @@ class PygoruutLanguages:
 		"EnglishBritish",
 		"NahuatlClassical",
 		"Hebrew2",
+		"Hebrew3",
 		"MinnanTawianese",
 		"MinnanHokkien"
+		"MinnanTawianese2",
+		"MinnanHokkien2"
         ]
 
     def get_supported_languages(self):
