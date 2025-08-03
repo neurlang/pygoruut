@@ -50,8 +50,9 @@ class Word:
 @dataclass
 class PhonemeResponse:
     Words: List[Word]
+    Separator: str
     def __str__(self):
-        return ' '.join([w.PrePunct + w.Phonetic + w.PostPunct for w in self.Words])
+        return self.Separator.join([w.PrePunct + w.Phonetic + w.PostPunct for w in self.Words])
 
 class Pygoruut:
     def __init__(self, version=None, writeable_bin_dir=None, api=None):
@@ -115,7 +116,7 @@ class Pygoruut:
             self.process.terminate()
             self.process.wait()
 
-    def phonemize(self, language="Greek", sentence="Σήμερα...", is_reverse=False) -> PhonemeResponse:
+    def phonemize(self, language="Greek", sentence="Σήμερα...", is_reverse=False, separator=" ", is_punct=True) -> PhonemeResponse:
         if ',' in language:
             languages = [PygoruutLanguages()[l] for l in language.split(',')]
             language = ""
@@ -130,5 +131,9 @@ class Pygoruut:
         response.raise_for_status()
         
         data = response.json()
-        words = [Word(**word) for word in data["Words"]]
-        return PhonemeResponse(Words=words)
+
+        if is_punct:
+            words = [Word(**word) for word in data["Words"]]
+        else:
+            words = [Word(**{**word, "PrePunct": "", "PostPunct": ""}) for word in data["Words"]]
+        return PhonemeResponse(Words=words, Separator=separator)
