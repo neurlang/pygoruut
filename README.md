@@ -49,7 +49,7 @@ Use comma (`,`) separated languages in `language`. The first language is the pre
 ```python
 print(pygoruut.phonemize(language="EnglishBritish,Slovak", sentence="hello world ahojte notindictionary!!!!"))
 
-# Prints: həlˈəʊ wəld aɦɔjcɛ nɔtɪndɪktˈɪoʊŋɑɹi!!!!
+# Prints: həlˈoʊ wˈɜɹld aɦɔjcɛ ŋətandəktɪnˈɑːɪ!!!!
 ```
 
 ---
@@ -59,17 +59,17 @@ print(pygoruut.phonemize(language="EnglishBritish,Slovak", sentence="hello world
 ```python
 print(str(pygoruut.phonemize(language="EnglishBritish", sentence="100 bottles")))
 
-# Prints: wʌn ˈhʌndrəd bˈɒtlz
+# Prints: wˈʌn hˈʌndɹəd bˈɒtəlz
 ```
 
 ---
 
-### Homograph handling (English)
+### Homograph handling (Hebrew3)
 
 ```python
-print(str(pygoruut.phonemize(language="EnglishBritish", sentence="He dove into the pool to join the dove")))
+print(str(pygoruut.phonemize(language="Hebrew3", sentence="השרים ביקשו מהשרים לפתוח את הדלתות של בית השרים.")))
 
-# Prints: hˈi dˈəʊv ˈɪntu ðə pˈuːl tə dʒˈɔɪn ðə dˈʌv
+# Prints: hasaʁˈim bikʃˈu mehasaʁˈim liftˈoaχ ʔˈat hadlatˈot ʃˈel bˈet hasaʁˈim.
 ```
 
 ---
@@ -77,7 +77,9 @@ print(str(pygoruut.phonemize(language="EnglishBritish", sentence="He dove into t
 ### No punctuation
 
 ```python
-' '.join([w.Phonetic for w in pygoruut.phonemize(language="EnglishBritish", sentence="hello world!!!!").Words])
+print(str(pygoruut.phonemize(language="EnglishBritish", sentence="hello world!!!!", is_punct=False)))
+
+# Prints: həlˈəʊ wˈɜːld
 ```
 
 ---
