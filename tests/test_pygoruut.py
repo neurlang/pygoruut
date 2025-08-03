@@ -5,9 +5,15 @@ from pygoruut.pygoruut import Pygoruut, PhonemeResponse, Word
 
 class TestPygoruut(unittest.TestCase):
     @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('pygoruut.pygoruut.Config')  # Patch Config class
     @patch('subprocess.Popen')  # Patch subprocess.Popen
-    def test_init(self, mock_popen, mock_config, mock_executable):
+    @patch('requests.post')
+    def test_init(self, mock_post, mock_popen, mock_executable):
+        mock_response = MagicMock()
+        mock_response.json.return_value = {
+            "Words": []
+        }
+        mock_post.return_value = mock_response
+
         # Mock MyPlatformExecutable's get method
         mock_executable.return_value.get.return_value = (MagicMock(), 'test_platform', 'test_version')
 
@@ -25,10 +31,21 @@ class TestPygoruut(unittest.TestCase):
         # Check if 'Serving...' was found
         mock_process.stderr.readline.assert_called()
 
+        mock_post.assert_called_once_with(
+            pygoruut.config.url("tts/phonemize/sentence"),
+            json={}, timeout=(10, 30)
+        )
+
     @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('pygoruut.pygoruut.Config')  # Patch Config class
     @patch('subprocess.Popen')  # Patch subprocess.Popen
-    def test_del(self, mock_popen, mock_config, mock_executable):
+    @patch('requests.post')
+    def test_del(self, mock_post, mock_popen, mock_executable):
+        mock_response = MagicMock()
+        mock_response.json.return_value = {
+            "Words": []
+        }
+        mock_post.return_value = mock_response
+
         # Mock MyPlatformExecutable's get method
         mock_executable.return_value.get.return_value = (MagicMock(), 'test_platform', 'test_version')
 
@@ -40,12 +57,18 @@ class TestPygoruut(unittest.TestCase):
 
         pygoruut = Pygoruut(writeable_bin_dir='')
 
+        mock_post.assert_called_once_with(
+            pygoruut.config.url("tts/phonemize/sentence"),
+            json={}, timeout=(10, 30)
+        )
+
         # Test the destructor (when the object is deleted)
         del pygoruut
 
         # Ensure terminate and wait were called
         mock_process.terminate.assert_called_once()
         mock_process.wait.assert_called_once()
+
 
     @patch('requests.post')
     def test_phonemize(self, mock_post):
@@ -61,6 +84,13 @@ class TestPygoruut(unittest.TestCase):
         mock_post.return_value = mock_response
 
         pygoruut = Pygoruut(writeable_bin_dir='')
+
+        mock_post.assert_called_once_with(
+            pygoruut.config.url("tts/phonemize/sentence"),
+            json={}, timeout=(10, 30)
+        )
+        mock_post.reset_mock()
+
         result = pygoruut.phonemize()
 
         self.assertIsInstance(result, PhonemeResponse)

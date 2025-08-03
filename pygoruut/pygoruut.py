@@ -100,7 +100,10 @@ class Pygoruut:
                     break  # Stop when the substring is found
                 #if output:
                 #    #print(output.strip())  # Print subprocess output for tracking purposes
-                    
+            url = self.config.url("tts/phonemize/sentence")
+            response = requests.post(url, json={}, timeout=(10, 30))
+            response.raise_for_status()
+
     def exact_version(self) -> str:
         return self.version
 
