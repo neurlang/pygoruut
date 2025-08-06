@@ -25,12 +25,12 @@ class Config:
 
 class ConfigApi:
     def __init__(self, url):
-        self.url = url
+        self._url = url
 
     def serialize(self, filename):
         return
 
     def url(self, subpath):
-        path = self.url + "/" + subpath
+        path = self._url + "/" + subpath
         #print(path)
         return path
