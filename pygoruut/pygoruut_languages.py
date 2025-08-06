@@ -146,7 +146,7 @@ class PygoruutLanguages:
 		"Hebrew2",
 		"Hebrew3",
 		"MinnanTawianese",
-		"MinnanHokkien"
+		"MinnanHokkien",
 		"MinnanTawianese2",
 		"MinnanHokkien2"
         ]
