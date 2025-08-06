@@ -55,7 +55,7 @@ class PhonemeResponse:
         return self.Separator.join([w.PrePunct + w.Phonetic + w.PostPunct for w in self.Words])
 
 class Pygoruut:
-    def __init__(self, version=None, writeable_bin_dir=None, api=None):
+    def __init__(self, version=None, writeable_bin_dir=None, api=None, models={}):
         if api is None:
             self.executable, self.platform, self.version = MyPlatformExecutable(version).get()
         else:
@@ -88,7 +88,7 @@ class Pygoruut:
             except Exception as e:
                 self.executable_path = self.executable.download(temp_dir)
             self.config = Config()
-            self.config.serialize(os.path.join(temp_dir, "goruut_config.json"))
+            self.config.serialize(os.path.join(temp_dir, "goruut_config.json"), models)
             self.process = subprocess.Popen([self.executable_path, "--configfile", os.path.join(temp_dir, "goruut_config.json")],
                 #stdout=subprocess.PIPE,  # Redirect stdout to capture it
                 stderr=subprocess.PIPE,  # (Optional) Redirect stderr if you want to capture errors

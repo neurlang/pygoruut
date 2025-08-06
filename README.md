@@ -108,6 +108,18 @@ pygoruut = Pygoruut(api='https://hashtron.cloud')
 
 ---
 
+### Use an extra model
+
+Extra model can be loaded from a ZIP file manually. It extends a specific language.
+
+```python
+from pygoruut.pygoruut import Pygoruut
+
+pygoruut = Pygoruut(models={"Hebrew3": "/home/john/Downloads/hebrew3.zip"})
+```
+
+---
+
 ### Configure a model download directory for faster startup
 
 To cache models in a user-specified directory:
