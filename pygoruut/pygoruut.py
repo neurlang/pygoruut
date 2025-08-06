@@ -56,7 +56,10 @@ class PhonemeResponse:
 
 class Pygoruut:
     def __init__(self, version=None, writeable_bin_dir=None, api=None):
-        self.executable, self.platform, self.version = MyPlatformExecutable(version).get()
+        if api is None:
+            self.executable, self.platform, self.version = MyPlatformExecutable(version).get()
+        else:
+            self.executable = None
         if self.executable is None:
             if api is not None:
                 self.executable = None
@@ -112,7 +115,7 @@ class Pygoruut:
         return self.version.rstrip('0123456789')
     
     def __del__(self):
-        if hasattr(self, 'process'):
+        if hasattr(self, 'process') and self.process is not None:
             self.process.terminate()
             self.process.wait()
 
