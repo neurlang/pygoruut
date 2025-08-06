@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pygoruut"
-version = "0.6.4"
+version = "0.6.5"
 description = "Text-to-IPA converter and phonetic translator for Python, powered by the Goruut phonemization engine"
 readme = "README.md"
 authors = [{ name = "Neurlang Project", email = "77860779+neurlang@users.noreply.github.com" }]
