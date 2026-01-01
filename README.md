@@ -69,7 +69,7 @@ print(str(pygoruut.phonemize(language="EnglishBritish", sentence="100 bottles"))
 ```python
 print(str(pygoruut.phonemize(language="Hebrew3", sentence="השרים ביקשו מהשרים לפתוח את הדלתות של בית השרים.")))
 
-# Prints: hasaʁˈim bikʃˈu mehasaʁˈim liftˈoaχ ʔˈat hadlatˈot ʃˈel bˈet hasaʁˈim.
+# Prints: hasaʁˈim bikʃˈu mehasaʁˈim liftˈoaχ ʔˈet hadlatˈot ʃˈel bajˈit hasaʁˈim.
 ```
 
 ---
@@ -79,7 +79,7 @@ print(str(pygoruut.phonemize(language="Hebrew3", sentence="השרים ביקשו
 ```python
 print(str(pygoruut.phonemize(language="EnglishBritish", sentence="hello world!!!!", is_punct=False)))
 
-# Prints: həlˈəʊ wˈɜːld
+# Prints: həlˈoʊ əɹld
 ```
 
 ---
