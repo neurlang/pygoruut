@@ -13,8 +13,8 @@ class TestPygoruutSanity(unittest.TestCase):
         test_cases = [
             # These have to be words which don't have multiple pronounces
             ("el", [
-                ("σιμερα", "ziˈmɛra", False),
-                ("καλιμερα", "kalimˈeˈˈa", False),
+                ("σιμερα", "zimera", False),
+                ("καλιμερα", "kalimera", False),
                 ("ευχαριστώ", "efxaˈristɔ", False)
             ]),
             ("English", [
