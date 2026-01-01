@@ -3,7 +3,7 @@
 # Files
 HASHES_FILE="hashes.txt"
 LENGTHS_FILE="lengths.txt"
-VERSION="v0.6.3"
+VERSION="v0.7.0"
 
 
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-android-arm64
