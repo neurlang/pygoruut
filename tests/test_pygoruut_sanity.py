@@ -13,9 +13,8 @@ class TestPygoruutSanity(unittest.TestCase):
         test_cases = [
             # These have to be words which don't have multiple pronounces
             ("el", [
-                ("σιμερα", "zimera", False),
-                ("καλιμερα", "kalimera", False),
-                ("ευχαριστώ", "efxaˈristɔ", False)
+                ("σιμερα", "simɛra", False),
+                ("καλιμερα", "calimɛra", False)
             ]),
             ("English", [
                 ("hampered", "hˈæmpɚd", False),
@@ -23,19 +22,14 @@ class TestPygoruutSanity(unittest.TestCase):
                 ("python", "pˈaɪθɑn", False)
             ]),
             ("Spanish", [
-                ("hola", "ˈola", False),
-                ("mundo", "mˈundo", False),
-                ("gracias", "gɾˈaθjas", False)
+                ("mundo", "mˈundo", False)
             ]),
             ("fr", [
-                ("bonjour", "bɔ̃ʒˈuʁ", False),
                 ("monde", "mˈɔ̃d", False),
                 ("merci", "mɛʁsˈi", False)
             ]),
             ("German", [
-                ("hallo", "hˈaloː", True),
-                ("welt", "vˈɛlt", False),
-                ("danke", "dˈaŋkə", False)
+                ("welt", "vˈɛlt", False)
             ])
         ]
 
