@@ -3,7 +3,7 @@
 # Files
 HASHES_FILE="hashes.txt"
 LENGTHS_FILE="lengths.txt"
-VERSION="v0.7.0"
+VERSION="v0.8.0"
 
 
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-android-arm64
@@ -20,12 +20,11 @@ wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-linux-
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-linux-riscv64
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-windows-386
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-windows-amd64
-wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-windows-arm
 wget https://github.com/neurlang/goruut/releases/download/$VERSION/goruut-windows-arm64
 
 
 sha256sum goruut-* > hashes.txt
-ls -l goruut-* | cut -d ' ' -f 5,10 > lengths.txt
+ls -l goruut-* | cut -d ' ' -f 5,9 > lengths.txt
 
 
 # Version details
