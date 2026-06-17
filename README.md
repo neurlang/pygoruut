@@ -9,11 +9,11 @@ pygoruut = Pygoruut()
 
 print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fast racing car")))
 
-# Prints: fˈæst ɹˈeɪsɪŋ kˈɑɹ
+# Prints: fˈæst ɹˈeɪsɪŋ kɑ˥˥
 
 # Now, convert it back
 
-print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fˈæst ɹˈeɪsɪŋ kˈɑɹ", is_reverse=True)))
+print(str(pygoruut.phonemize(language="EnglishAmerican", sentence="fˈæst ɹˈeɪsɪŋ kɑ˥˥", is_reverse=True)))
 
 # Prints: fast racing car
 ```
@@ -47,9 +47,9 @@ The quality of translation varies across the 136 supported languages.
 Use comma (`,`) separated languages in `language`. The first language is the preferred language:
 
 ```python
-print(pygoruut.phonemize(language="EnglishBritish,Slovak", sentence="hello world ahojte notindictionary!!!!"))
+print(pygoruut.phonemize(language="Slovak,EnglishBritish", sentence="hello world ahojte notindictionary!!!!"))
 
-# Prints: həlˈoʊ wˈɜɹld aɦɔjcɛ ŋətandəktɪnˈɑːɪ!!!!
+# Prints: həlˈoʊ wˈɜɹld aɦɔjtɛ nɔtinditstiɔnari!!!!
 ```
 
 ---
@@ -69,7 +69,7 @@ print(str(pygoruut.phonemize(language="EnglishBritish", sentence="100 bottles"))
 ```python
 print(str(pygoruut.phonemize(language="Hebrew3", sentence="השרים ביקשו מהשרים לפתוח את הדלתות של בית השרים.")))
 
-# Prints: hasaʁˈim bikʃˈu mehasaʁˈim liftˈoaχ ʔˈet hadlatˈot ʃˈel bajˈit hasaʁˈim.
+# Prints: hasaʁˈim bʲikɪ̞ʃu mehasaʁˈim liftˈoaχ ʔˈet hadlatˈot ʃˈel bˈajit hasaʁˈim.
 ```
 
 ---
@@ -79,7 +79,7 @@ print(str(pygoruut.phonemize(language="Hebrew3", sentence="השרים ביקשו
 ```python
 print(str(pygoruut.phonemize(language="EnglishBritish", sentence="hello world!!!!", is_punct=False)))
 
-# Prints: həlˈoʊ əɹld
+# Prints: həlˈoʊ wˈɜːld
 ```
 
 ---
