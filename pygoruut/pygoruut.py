@@ -2,6 +2,7 @@ import subprocess
 import os
 import time
 import requests
+import threading
 from dataclasses import dataclass, field
 from typing import List
 from pygoruut.executable import MyPlatformExecutable
@@ -104,9 +105,19 @@ class Pygoruut:
                     break  # Stop when the substring is found
                 #if output:
                 #    #print(output.strip())  # Print subprocess output for tracking purposes
+            drainer = threading.Thread(target=self._drain_stderr, daemon=True)
+            drainer.start()
             url = self.config.url("tts/phonemize/sentence")
             response = requests.post(url, json={}, timeout=(10, 30))
             response.raise_for_status()
+            print('END')
+
+    def _drain_stderr(self):
+        try:
+            for line in self.process.stderr:
+                pass
+        except ValueError:
+            pass
 
     def exact_version(self) -> str:
         return self.version
