@@ -91,32 +91,29 @@ class Pygoruut:
             self.config = Config()
             self.config.serialize(os.path.join(temp_dir, "goruut_config.json"), models)
             self.process = subprocess.Popen([self.executable_path, "--configfile", os.path.join(temp_dir, "goruut_config.json")],
-                #stdout=subprocess.PIPE,  # Redirect stdout to capture it
-                stderr=subprocess.PIPE,  # (Optional) Redirect stderr if you want to capture errors
-                text=True  # Ensure the output is in text mode (instead of bytes)
+                stderr=subprocess.PIPE,
+                text=True
             )
-            # Read stdout line by line
-            while True:
-                output = self.process.stderr.readline()
-                if output == '' and self.process.poll() is not None:
-                    break  # If process has ended and no output is left, stop
-                if 'Serving...' in output:
-                    #print("Process running")
-                    break  # Stop when the substring is found
-                #if output:
-                #    #print(output.strip())  # Print subprocess output for tracking purposes
             drainer = threading.Thread(target=self._drain_stderr, daemon=True)
             drainer.start()
             url = self.config.url("tts/phonemize/sentence")
-            response = requests.post(url, json={}, timeout=(10, 30))
-            response.raise_for_status()
-            print('END')
+            for _ in range(60):
+                if self.process.poll() is not None:
+                    raise RuntimeError("Phonemize server exited before becoming ready")
+                try:
+                    response = requests.post(url, json={}, timeout=0.5)
+                    response.raise_for_status()
+                    break
+                except (requests.ConnectionError, requests.Timeout):
+                    time.sleep(0.5)
+            else:
+                raise RuntimeError("Phonemize server did not start within 30 seconds")
 
     def _drain_stderr(self):
         try:
             for line in self.process.stderr:
                 pass
-        except ValueError:
+        except Exception:
             pass
 
     def exact_version(self) -> str:
@@ -126,9 +123,16 @@ class Pygoruut:
         return self.version.rstrip('0123456789')
     
     def __del__(self):
-        if hasattr(self, 'process') and self.process is not None:
-            self.process.terminate()
-            self.process.wait()
+        try:
+            proc = self.process
+        except AttributeError:
+            return
+        if proc is not None:
+            try:
+                proc.terminate()
+                proc.wait()
+            except Exception:
+                pass
 
     def phonemize(self, language="Greek", sentence="Σήμερα...", is_reverse=False, separator=" ", is_punct=True) -> PhonemeResponse:
         if ',' in language:

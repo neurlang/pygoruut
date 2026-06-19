@@ -4,54 +4,40 @@ from pygoruut.pygoruut import Pygoruut, PhonemeResponse, Word
 
 
 class TestPygoruut(unittest.TestCase):
-    @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('subprocess.Popen')  # Patch subprocess.Popen
+    @patch('pygoruut.pygoruut.MyPlatformExecutable')
+    @patch('subprocess.Popen')
     @patch('requests.post')
     def test_init(self, mock_post, mock_popen, mock_executable):
         mock_response = MagicMock()
-        mock_response.json.return_value = {
-            "Words": []
-        }
+        mock_response.json.return_value = {"Words": []}
         mock_post.return_value = mock_response
 
-        # Mock MyPlatformExecutable's get method
         mock_executable.return_value.get.return_value = (MagicMock(), 'test_platform', 'test_version')
 
-        # Mock Popen to simulate a process that will print 'Serving...'
         mock_process = MagicMock()
-        mock_process.stderr.readline.side_effect = ['Serving...\n', '']
         mock_process.poll.return_value = None
         mock_popen.return_value = mock_process
 
         pygoruut = Pygoruut(writeable_bin_dir='')
 
-        # Assert Popen was called with expected arguments
         mock_popen.assert_called_once()
-
-        # Check if 'Serving...' was found
-        mock_process.stderr.readline.assert_called()
 
         mock_post.assert_called_once_with(
             pygoruut.config.url("tts/phonemize/sentence"),
-            json={}, timeout=(10, 30)
+            json={}, timeout=0.5
         )
 
-    @patch('pygoruut.pygoruut.MyPlatformExecutable')  # Patch MyPlatformExecutable
-    @patch('subprocess.Popen')  # Patch subprocess.Popen
+    @patch('pygoruut.pygoruut.MyPlatformExecutable')
+    @patch('subprocess.Popen')
     @patch('requests.post')
     def test_del(self, mock_post, mock_popen, mock_executable):
         mock_response = MagicMock()
-        mock_response.json.return_value = {
-            "Words": []
-        }
+        mock_response.json.return_value = {"Words": []}
         mock_post.return_value = mock_response
 
-        # Mock MyPlatformExecutable's get method
         mock_executable.return_value.get.return_value = (MagicMock(), 'test_platform', 'test_version')
 
-        # Mock Popen to simulate a subprocess
         mock_process = MagicMock()
-        mock_process.stderr.readline.side_effect = ['Serving...\n', '']
         mock_process.poll.return_value = None
         mock_popen.return_value = mock_process
 
@@ -59,19 +45,19 @@ class TestPygoruut(unittest.TestCase):
 
         mock_post.assert_called_once_with(
             pygoruut.config.url("tts/phonemize/sentence"),
-            json={}, timeout=(10, 30)
+            json={}, timeout=0.5
         )
 
-        # Test the destructor (when the object is deleted)
         del pygoruut
 
-        # Ensure terminate and wait were called
         mock_process.terminate.assert_called_once()
         mock_process.wait.assert_called_once()
 
 
+    @patch('pygoruut.pygoruut.MyPlatformExecutable')
+    @patch('subprocess.Popen')
     @patch('requests.post')
-    def test_phonemize(self, mock_post):
+    def test_phonemize(self, mock_post, mock_popen, mock_executable):
         mock_response = MagicMock()
         mock_response.json.return_value = {
             "Words": [
@@ -83,11 +69,17 @@ class TestPygoruut(unittest.TestCase):
         }
         mock_post.return_value = mock_response
 
+        mock_executable.return_value.get.return_value = (MagicMock(), 'test_platform', 'test_version')
+
+        mock_process = MagicMock()
+        mock_process.poll.return_value = None
+        mock_popen.return_value = mock_process
+
         pygoruut = Pygoruut(writeable_bin_dir='')
 
         mock_post.assert_called_once_with(
             pygoruut.config.url("tts/phonemize/sentence"),
-            json={}, timeout=(10, 30)
+            json={}, timeout=0.5
         )
         mock_post.reset_mock()
 
